@@ -11,6 +11,11 @@ const sslOptions = {
   rejectUnauthorized: true
 };
 
+const client = new cassandra.Client({
+  contactPoints: contactPoints, 
+  authProvider: authProvider, 
+  localDataCenter: 'dc1',
+  sslOptions: sslOptions,});
 
 async function connecttoDb() {
   const client = new cassandra.Client({
@@ -33,3 +38,12 @@ async function connecttoDb() {
   }
 }());
 
+var query = 'SELECT * FROM CSCI_541_Project.customers';
+client.execute(query, [], (err, result) => {
+  if(err) {
+    console.log('err: $' + JSON.stringify(err))
+  } else {
+    console.log('result: $' + JSON.stringify(result))
+  }
+  process.exit();
+});
