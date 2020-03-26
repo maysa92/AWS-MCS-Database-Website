@@ -7,7 +7,7 @@ var authProvider = new cassandra.auth.PlainTextAuthProvider('Sin-Rou_Chen-at-299
 const port = 4000;
 const sslOptions = {
   cert: fs.readFileSync('AmazonRootCA1.pem'),
-  host: 'cassandra.us-east-1.amazonaws.com',
+  host: 'cassandra.us-east-2.amazonaws.com',
   rejectUnauthorized: true
 };
 
@@ -38,8 +38,10 @@ async function connecttoDb() {
   }
 }());
 
-var query = 'SELECT * FROM CSCI_541_Project.customers';
-client.execute(query, [], (err, result) => {
+
+var query1 = 'SELECT * FROM "CSCI_541_Project".customers';
+
+client.execute(query1, [], (err, result) => {
   if(err) {
     console.log('err: $' + JSON.stringify(err))
   } else {
