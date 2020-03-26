@@ -4,25 +4,22 @@ const app = express();
 const cassandra = require('cassandra-driver');
 var contactPoints = ['cassandra.us-east-2.amazonaws.com:9142'];
 var authProvider = new cassandra.auth.PlainTextAuthProvider('Sin-Rou_Chen-at-299196734494', 'bafkYpBEJ51qM/FOU+jrjBmNoX57l5W0hHwGOpzXTB8=')
-const port = process.env.API_SERVER_PORT || 4000;
+const port = 4000;
 const sslOptions = {
   cert: fs.readFileSync('AmazonRootCA1.pem'),
   host: 'cassandra.us-east-1.amazonaws.com',
   rejectUnauthorized: true
 };
 
-const client = new cassandra.Client(
-  {contactPoints: contactPoints, 
-    authProvider: authProvider, 
-    localDataCenter: 'datacenter1',
-    sslOptions: sslOptions,
-    keyspace: 'CSCI_541_Project'
-    });
 
 async function connecttoDb() {
-  const client = new cassandra.Client({contactPoints: contactPoints, localDataCenter: 'datacenter1', keyspace: 'cars' });
+  const client = new cassandra.Client({
+    contactPoints: contactPoints, 
+    authProvider: authProvider, 
+    localDataCenter: 'dc1',
+    sslOptions: sslOptions,});
   await client.connect();
-  console.log('Connected to Cassandra');
+  console.log('Connected to MCS');
 }
 
 (async function start() {
