@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  style(type='text/css').
+    .tablestyle{
+        border: 1px solid black;
+    }
+  h2= title
+  -var datalist=datas
+    div
+      table.tablestyle
+        thead
+          tr 
+            th.tablestyle ItemID
+            th.tablestyle Coast
+            th.tablestyle Name
+            th.tablestyle Description
+            th.tablestyle SupplierName
+        tbody
+          each data in datas
+            tr  
+              td.tablestyle=data.item_id	
+              td.tablestyle=data.item_cost
+              td.tablestyle=data.item_name
+              td.tablestyle=data.item_description
+              td.tablestyle=data.item_suppiler
+             
+              
+      //(style='border: 1px solid black')
+      
+
