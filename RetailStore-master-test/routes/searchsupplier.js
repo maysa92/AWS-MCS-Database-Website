@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
-var cassandra = require('cassandra-driver');
-var contactPoints = ['cassandra.us-east-2.amazonaws.com:9142'];
-var authProvider = new cassandra.auth.PlainTextAuthProvider('Sin-Rou_Chen-at-299196734494', 'bafkYpBEJ51qM/FOU+jrjBmNoX57l5W0hHwGOpzXTB8=')
-var port = 4002;
+//var cassandra = require('cassandra-driver');
+//var contactPoints = ['cassandra.us-east-2.amazonaws.com:9142'];
+//var authProvider = new cassandra.auth.PlainTextAuthProvider('Sin-Rou_Chen-at-299196734494', 'bafkYpBEJ51qM/FOU+jrjBmNoX57l5W0hHwGOpzXTB8=')
+//var port = 4002;
 var app = express();
-
+/*
 var sslOptions = {
   cert: fs.readFileSync('AmazonRootCA1.pem'),
   host: 'cassandra.us-east-2.amazonaws.com',
@@ -41,7 +41,7 @@ async function connecttoDb() {
   }
 }());
 
-
+*/
 
 /* GET home page. */
 router.get('/', function(req, res) {

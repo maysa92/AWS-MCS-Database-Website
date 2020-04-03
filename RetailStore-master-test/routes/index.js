@@ -1,11 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-var http = require('http');
 var cassandra = require('cassandra-driver');
 var contactPoints = ['cassandra.us-east-2.amazonaws.com:9142'];
-var authProvider = new cassandra.auth.PlainTextAuthProvider('Sin-Rou_Chen-at-299196734494', 'bafkYpBEJ51qM/FOU+jrjBmNoX57l5W0hHwGOpzXTB8=')
-var port = process.env.PORT || 8081;
+var authProvider = new cassandra.auth.PlainTextAuthProvider('Sin-Rou_Chen-at-299196734494', 'bafkYpBEJ51qM/FOU+jrjBmNoX57l5W0hHwGOpzXTB8=');
 var app = express();
 
 var sslOptions = {
@@ -20,29 +18,7 @@ var client = new cassandra.Client({
   localDataCenter: 'us-east-2',
   sslOptions: sslOptions,});
 
-async function connecttoDb() {
-  var client = new cassandra.Client({
-    contactPoints: contactPoints, 
-    authProvider: authProvider, 
-    localDataCenter: 'us-east-2',
-    sslOptions: sslOptions,});
-  await client.connect();
-  console.log('Connected to MCS');
-}
-
-(async function start() {
-  try {
-    await connecttoDb();
-    app.listen(port, () =>{
-      console.log(`Server started on port ${port}`);
-    });
-  } catch (err) {
-    console.log('ERROR:', err);
-  }
-}());
-
 var getAllSuppliers = 'SELECT * FROM "CSCI_541_Project".suppliers';
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

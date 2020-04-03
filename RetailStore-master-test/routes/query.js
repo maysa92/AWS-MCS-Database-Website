@@ -5,7 +5,7 @@ var fs = require('fs');
 var cassandra = require('cassandra-driver');
 var contactPoints = ['cassandra.us-east-2.amazonaws.com:9142'];
 var authProvider = new cassandra.auth.PlainTextAuthProvider('Sin-Rou_Chen-at-299196734494', 'bafkYpBEJ51qM/FOU+jrjBmNoX57l5W0hHwGOpzXTB8=')
-var port = 4001;
+//var port = 4001;
 var app = express();
 
 var sslOptions = {
@@ -19,7 +19,7 @@ var client = new cassandra.Client({
   authProvider: authProvider, 
   localDataCenter: 'us-east-2',
   sslOptions: sslOptions,});
-
+/*
 async function connecttoDb() {
   var client = new cassandra.Client({
     contactPoints: contactPoints, 
@@ -40,7 +40,7 @@ async function connecttoDb() {
     console.log('ERROR:', err);
   }
 }());
-
+*/
 //var getAllSuppliers = 'SELECT supplier_id,supplier_address,supplier_name FROM "CSCI_541_Project".suppliers limit 1';
 var queryAllSuppliersRecord = 'SELECT * FROM "CSCI_541_Project"."Retail_Items" where item_suppiler= ? allow filtering';
 
